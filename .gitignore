@@ -1,0 +1,16 @@
+# Node
+node_modules/
+dist/
+build/
+.env
+
+# MacOS
+.DS_Store
+
+# IDEs
+.vscode/
+.idea/
+
+# Backend
+backend/vendor/
+*.log
