@@ -127,6 +127,18 @@ Se você usa VirtualBox com rede NAT e não consegue acessar pelo navegador do W
     *   **Backend**: TCP | Host 8000 -> Guest 8000
 3.  Acesse `http://localhost:3000`.
 
+### Erro de Autenticação no Banco (FATAL: password authentication failed)
+Se mesmo com a senha correta você não conseguir conectar no banco, pode ser necessário ajustar as permissões locais o Postgres:
+
+1.  Edite a configuração: `sudo nano /etc/postgresql/*/main/pg_hba.conf`
+2.  Mude as linhas de conexão local de `md5` ou `peer` para `trust`:
+    ```
+    # TYPE  DATABASE        USER            ADDRESS                 METHOD
+    local   all             all                                     trust
+    host    all             all             0.0.0.0/0               trust
+    ```
+3.  Reinicie o serviço: `sudo service postgresql restart`
+
 ## Automatização (Rodar Automaticamente)
 
 Para não precisar abrir dois terminais toda vez, criei um script `start.sh`.
