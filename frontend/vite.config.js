@@ -13,11 +13,10 @@ export default defineConfig({
   server: {
     port: 3000,
     proxy: {
-        '/api': {
-            target: 'http://localhost:8000', // Adjust this to where PHP server runs
-            changeOrigin: true,
-            rewrite: (path) => path.replace(/^\/api/, '')
-        }
+      '/api': {
+        target: 'http://localhost:8000', // Adjust this to where PHP server runs
+        changeOrigin: true
+      }
     }
   }
 })
